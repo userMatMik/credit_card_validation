@@ -1,0 +1,282 @@
+@import url("https://fonts.googleapis.com/css?family=Space+Mono:400,400i,700,700i");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap");
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+  max-width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.left-side {
+  background-image: -webkit-gradient(linear, left top, right top, from(#202020), to(gray));
+  background-image: linear-gradient(to right, #202020, gray);
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+.right-side {
+  min-width: 100%;
+  min-height: 100vh;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff6767), to(#ff4545));
+  background-image: linear-gradient(to bottom, #ff6767, #ff4545);
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transform: skewX(20deg) translateX(40%);
+          transform: skewX(20deg) translateX(40%);
+}
+
+.card-container {
+  width: 400px;
+  height: 250px;
+  -webkit-perspective: 900px;
+          perspective: 900px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 20%;
+  z-index: 2;
+}
+
+.card {
+  position: relative;
+  width: 400px;
+  height: 250px;
+  border-radius: 15px;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-box-shadow: 8px 8px 24px 0px #090909;
+  box-shadow: 8px 8px 24px 0px #090909;
+}
+
+.card--front, .card--back {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.card--back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.card-container:hover .card {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.logo-container {
+  text-align: right;
+}
+
+.logo {
+  max-width: 60px;
+}
+
+.front {
+  width: 100%;
+  height: 100%;
+  padding: 25px 30px;
+  background-image: linear-gradient(138deg, #222222 25%, #111111 25%, #111111 50%, #222222 50%, #222222 75%, #111111 75%, #111111 100%);
+  background-size: 11.96px 10.77px;
+  border-radius: 15px;
+  font-family: monospace;
+}
+
+.details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  gap: 0.65rem;
+  margin-top: 15px;
+}
+
+.chip {
+  position: relative;
+  width: 60px;
+  height: 40px;
+  background-image: -webkit-gradient(linear, left top, right top, from(#BF953F), color-stop(#e2db92), to(#BF953F));
+  background-image: linear-gradient(to right, #BF953F, #e2db92, #BF953F);
+  border-radius: 7px;
+}
+
+.chip__line {
+  position: absolute;
+  background-color: #202020;
+  width: 60px;
+  height: 1px;
+}
+
+.chip__line:nth-child(1) {
+  top: 10px;
+}
+
+.chip__line:nth-child(2) {
+  bottom: 10px;
+}
+
+.chip__line:nth-child(3) {
+  bottom: 20px;
+}
+
+.chip__line:nth-child(4) {
+  width: 1px;
+  height: 40px;
+  right: 20px;
+}
+
+.chip__line:nth-child(5) {
+  width: 1px;
+  height: 40px;
+  left: 20px;
+}
+
+.chip__top {
+  position: absolute;
+  width: 30px;
+  height: 25px;
+  border: 1px solid #111111;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#BF953F), color-stop(#e2db92), to(#BF953F));
+  background-image: linear-gradient(to bottom, #BF953F, #e2db92, #BF953F);
+  top: 20%;
+  left: 25%;
+  border-radius: 4px;
+}
+
+.details__number-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+  font-family: "Space Mono", monospace;
+  font-size: 1.75rem;
+}
+
+.details__date-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 1rem;
+  color: white;
+  width: 50%;
+}
+
+.details__date-container .details__date-text {
+  font-family: "Space Mono", monospace;
+  font-size: 0.685rem;
+  line-height: 1;
+}
+
+.details__date-container .details__date {
+  font-family: "Space Mono", monospace;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.details__name {
+  font-family: "Space Mono", monospace;
+  font-size: 1.25rem;
+  color: white;
+  text-transform: uppercase;
+  justify-self: flex-end;
+}
+
+.back {
+  position: absolute;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 0.625rem;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-image: -webkit-gradient(linear, right top, left top, from(#222222), to(#333333));
+  background-image: linear-gradient(to left, #222222, #333333);
+  top: 0;
+}
+
+.back__stripe {
+  height: 50px;
+  background-color: #111111;
+  margin-block: 25px;
+}
+
+.back__main {
+  padding-inline: 25px;
+  padding-bottom: 25px;
+}
+
+.back__ccv-label {
+  display: block;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.back__white-stripe {
+  height: 30px;
+  background-color: white;
+  color: #111111;
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-bottom: 25px;
+}
+
+.back__ccv {
+  font-family: inherit;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.back__text {
+  font-family: inherit;
+  font-size: 0.625rem;
+}
+/*# sourceMappingURL=style.css.map */
