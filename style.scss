@@ -5,6 +5,7 @@
 
 $ff-front: 'Space Mono', monospace;
 $ff-back: 'Montserrat', sans-serif;
+$ff-signature: 'Rock Salt', cursive;
 $br: 15px;
 
 
@@ -60,6 +61,78 @@ body {
     transform: skewX(20deg) translateX(40%);
 }
 
+// .app {
+//     position: absolute;
+//   
+// }
+
+.form-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20%;
+    z-index: 2;
+
+    font-family: $ff-back;
+
+    max-width: 400px;
+    background-color: #fa6e6e;
+    padding: 20px;
+
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+        "name name"
+        "number number"
+        "expiration cvv-code";
+    column-gap: 10px;
+    row-gap: 20px;
+
+    .field-container:first-of-type {
+        grid-area: name;
+    }
+
+    .field-container:nth-of-type(2) {
+        grid-area: number;
+    }
+
+    .field-container:nth-of-type(3) {
+        grid-area: expiration;
+    }
+
+    .field-container:nth-of-type(4) {
+        grid-area: cvv-code;
+    }
+    
+    label {
+        font-family: inherit;
+        font-size: 0.675rem;
+        font-weight: 500;
+        color: white;
+        
+    }
+
+    input {
+        display: block;
+        width: 100%;
+        border: none;
+        background-color: #fca0a0;
+        margin-top: 5px;
+        padding-block: 10px;
+        padding-inline: 15px;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 500;
+        color: white;
+        
+
+        &:focus {
+            outline: 1px solid white;
+        }
+    }
+}
+
 .card-container {
     width: 400px;
     height: 250px;
@@ -87,8 +160,8 @@ body {
     transform-style: preserve-3d;
 
     -webkit-box-shadow: 8px 8px 24px 0px rgba(9, 9, 9, 1);
--moz-box-shadow: 8px 8px 24px 0px rgba(9, 9, 9, 1);
-box-shadow: 8px 8px 24px 0px rgba(9, 9, 9, 1);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(9, 9, 9, 1);
+    box-shadow: 8px 8px 24px 0px rgba(9, 9, 9, 1);
     
 
     &--front, &--back {
@@ -100,7 +173,10 @@ box-shadow: 8px 8px 24px 0px rgba(9, 9, 9, 1);
     }
 }
 
-.card-container:hover .card {
+// .card-container:hover .flipped (card) {
+//     transform: rotateY(180deg);
+// }
+.flipped {
     transform: rotateY(180deg);
 }
 
@@ -117,8 +193,7 @@ box-shadow: 8px 8px 24px 0px rgba(9, 9, 9, 1);
     width: 100%;
     height: 100%;
     padding: 25px 30px;
-    background-image: linear-gradient(138deg, #222222 25%, #111111 25%, #111111 50%, #222222 50%, #222222 75%, #111111 75%, #111111 100%);
-    background-size: 11.96px 10.77px;
+    background-image: repeating-linear-gradient(135deg, #222222 0px, #222222 5px, #111111 5px, #111111 10px);
 
     border-radius: 15px;
     font-family: monospace;
