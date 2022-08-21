@@ -125,6 +125,7 @@ body {
         font-size: 1rem;
         font-weight: 500;
         color: white;
+        text-transform: capitalize;
         
 
         &:focus {
@@ -182,11 +183,31 @@ body {
 
 .logo-container {
     text-align: right;
-    // margin-bottom: 10px;
+    display: flex;
+    height: 50px;
+    
+    justify-content: flex-end;
+    
+
+    position: relative;
+
 }
 
 .logo {
-    max-width: 60px;    
+    max-width: 60px;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+
+.american { 
+    top: -15px;
+}
+
+.active {
+    display: block;
 }
 
 .front {
@@ -204,7 +225,7 @@ body {
     display: flex;
     flex-flow: column nowrap;
     gap: 0.65rem;
-    margin-top: 15px;
+    // margin-top: 15px;
 
 }
 
