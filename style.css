@@ -176,7 +176,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 50px;
+  height: 40px;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;

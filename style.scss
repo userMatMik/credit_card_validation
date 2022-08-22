@@ -184,13 +184,11 @@ body {
 .logo-container {
     text-align: right;
     display: flex;
-    height: 50px;
+    height: 40px;
     
     justify-content: flex-end;
     
-
     position: relative;
-
 }
 
 .logo {
@@ -199,7 +197,6 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-
 }
 
 .american { 

@@ -12,8 +12,6 @@ const cvvEl = document.querySelector('#cvv');
 console.log(cvv)
 
 //expiration date handle
-
-
 expirationInput.addEventListener('input', (event) => {
     expirationDateEl.textContent = event.target.value;
 })
@@ -42,7 +40,6 @@ cardNumberInput.addEventListener('input', (event) => {
 })
 
 cardNumberInput.addEventListener('keypress', (event) => {
-    console.log(event);
     const pressedKeyCode = event.keyCode;
     const inputValue = event.target.value
 
@@ -53,10 +50,83 @@ cardNumberInput.addEventListener('keypress', (event) => {
     if (inputValue.length === 4 || inputValue.length === 9 || inputValue.length === 14) {
         event.target.value += " ";
     }  
-    console.log(inputValue)
 })
 
 // cvv handle
+
+cvvInput.addEventListener('input', (event) => {
+    cvvEl.textContent = event.target.value;
+})
+
+cvvInput.addEventListener('keypress', (event) => {
+    const pressedKeyCode = event.keyCode;
+    if(!((pressedKeyCode >= 48 && pressedKeyCode <= 57) || pressedKeyCode === 8)) {
+        event.preventDefault();
+    }
+})
+
+
+//check provider and change logo on card  console.log(luhnsCheck('5193080150954111'))
+// console.log(verifyCardProvider('371449635398431'))
+// console.log(luhnsCheck('6011111111111117')) 4222222222222 
+
+
+function changeProviderLogo(event) {
+    const visaLogo = document.querySelector('#visa');
+    const masterCardLogo = document.querySelector('#master_card');
+    const americanExpLogo = document.querySelector('#american_exp');
+    
+    const logos = document.querySelectorAll('.logo');
+    
+
+    const val = event.target.value.replaceAll(' ', '');
+    const cardProvider = verifyCardProvider(val);
+
+    if (cardProvider === 'MasterCard') {
+        logos.forEach(logo => {
+            logo.classList.remove('active');
+            })
+        masterCardLogo.classList.add('active');
+    } else if (cardProvider === 'AmericanExpress') {
+        logos.forEach(logo => {
+            logo.classList.remove('active');
+            })
+        americanExpLogo.classList.add('active');
+    } else if (cardProvider === 'Visa') {
+        logos.forEach(logo => {
+            logo.classList.remove('active');
+            })
+        visaLogo.classList.add('active');
+    }
+
+    // switch (cardProvider) {
+    //     case 'MasterCard':
+    //         logos.forEach(logo => {
+    //             logo.classList.remove('active');
+    //         })
+    //         masterCardLogo.classList.add('active');
+        
+    //     case 'Visa': {
+    //         logos.forEach(logo => {
+    //             logo.classList.remove('active');
+    //         })
+    //         visaLogo.classList.add('active');
+    //     }
+    //     case 'AmericanExpress': {
+    //         logos.forEach(logo => {
+    //             logo.classList.remove('active');
+    //         })
+    //         americanExpLogo.classList.add('active');
+    //     }
+    // }
+
+    console.log(val);
+    console.log(cardProvider);
+    
+
+}
+
+cardNumberInput.addEventListener('input', changeProviderLogo)
 
 
 // cardNumberInput.addEventListener('input', (event) => {
@@ -86,17 +156,8 @@ cvvInput.addEventListener('focusout', () => {
     cardEl.classList.remove('flipped');
 })
 
-console.log(cardEl)
-
-let splitted = ''
-const str = "1234567890123456"
-for(let i = 0; i < str.length; i += 4) {
-    
-    splitted += str.slice(i, i + 4) + ' ';
-    
-    console.log(splitted)
-}
-
+// Luhns validation
+// TODO: try to use reduce more
 
 function luhnsCheck(cardNumber) {
     cardNumReversed = [...cardNumber].map(str => Number(str)).reverse();
@@ -116,7 +177,7 @@ function luhnsCheck(cardNumber) {
         }
     }
 
-    const sumOfOdd =  cardNumReversed.reduce((acc, num) => {
+    const sumOfOdd = cardNumReversed.reduce((acc, num) => {
         return acc += num;
     }, 0)
 
@@ -138,9 +199,9 @@ function verifyCardProvider(cardNumber) {
     if (cardNumber.length === 16 && (firstTwoChars == 51 || firstTwoChars == 52 || firstTwoChars == 53 || firstTwoChars == 54 || firstTwoChars == 55)) {
         return "MasterCard";
     } else if ((cardNumber.length === 13 || cardNumber.length === 16) && cardNumber[0] == 4) {
-        return "VISA";
+        return "Visa";
     } else if (cardNumber.length === 15 && (firstTwoChars == 34 || firstTwoChars == 37)) {
-        return "American Express"
+        return "AmericanExpress"
     } else {
         return 'Default';
     }
